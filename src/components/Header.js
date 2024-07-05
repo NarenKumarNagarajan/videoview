@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <div className="relative flex flex-row items-center justify-between bg-white px-6 py-4 shadow-lg dark:bg-slate-900">
+    <div className="flex flex-row items-center justify-between bg-white px-6 py-4 dark:bg-slate-900">
       <div className="flex items-center">
         <GiHamburgerMenu
           className="h-6 w-6 cursor-pointer dark:text-white"

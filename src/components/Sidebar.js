@@ -14,7 +14,7 @@ const Sidebar = () => {
   if (!sidebarOpen) return;
 
   return (
-    <div className="h-screen w-60 px-4 py-5 text-lg shadow-2xl dark:bg-slate-900 dark:text-white">
+    <div className="h-auto w-60 px-4 py-5 text-lg dark:bg-slate-900 dark:text-white">
       <ul className="list-none">
         <li className="mb-5 mt-3 flex items-center">
           <MdHomeFilled className="mr-6 text-3xl" />
