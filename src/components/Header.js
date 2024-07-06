@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
@@ -35,7 +35,9 @@ const Header = () => {
           className="h-6 w-6 cursor-pointer dark:text-white"
           onClick={() => dispatch(sidebarShow())}
         />
-        <img src={logo} alt="logo" className="ml-8 h-12" />
+        <Link to="/dashboard">
+          <img src={logo} alt="logo" className="ml-8 h-12 cursor-pointer" />
+        </Link>
       </div>
       <div className="flex items-center justify-center">
         <input

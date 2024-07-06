@@ -13,7 +13,16 @@ const usePublishedTime = (publishedAt) => {
   }
 
   const diffInHours = Math.floor(diffInMinutes / 60);
-  return diffInHours + " hours ago";
+  if (diffInHours < 24) {
+    return diffInHours + " hours ago";
+  }
+
+  const diffInDays = Math.floor(diffInHours / 24);
+  if (diffInDays === 1) {
+    return "1 day ago";
+  }
+
+  return diffInDays + " days ago";
 };
 
 export default usePublishedTime;
