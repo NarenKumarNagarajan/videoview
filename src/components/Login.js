@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -6,10 +6,9 @@ import background from "../images/background.jpg";
 import logo from "../images/logo.png";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { CAPTCHA_VALUE, COOKIE_TIME } from "../utils/globalConstants";
-import useVerifyLogin from "../hooks/useVerifyLogin";
+import { TbLoader3 } from "react-icons/tb";
 
 const Login = () => {
-  const loginStatus = useVerifyLogin();
   const navigate = useNavigate();
 
   const [userName, setUserName] = useState("");
@@ -17,6 +16,22 @@ const Login = () => {
   const [captcha, setCaptcha] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+
+  const hasCookie = Cookies.get("userCookie");
+
+  useEffect(() => {
+    if (hasCookie) {
+      navigate("/dashboard");
+    }
+  }, [navigate, hasCookie]);
+
+  if (hasCookie) {
+    return (
+      <div className="flex h-screen w-screen flex-col items-center justify-center bg-black text-[100px] text-white">
+        <TbLoader3 />
+      </div>
+    );
+  }
 
   const formValidation = async () => {
     if (userName !== "user") {
@@ -37,7 +52,7 @@ const Login = () => {
     }
   };
 
-  return !loginStatus ? (
+  return (
     <div
       className="flex h-screen w-screen flex-col items-center justify-center bg-cover bg-center"
       style={{
@@ -109,8 +124,6 @@ const Login = () => {
         <div className="font-bold text-white">Password: user@1234</div>
       </form>
     </div>
-  ) : (
-    loginStatus
   );
 };
 

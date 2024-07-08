@@ -10,12 +10,15 @@ const appSlice = createSlice({
     sidebarShow: (state) => {
       state.sidebarOpen = !state.sidebarOpen;
     },
+    sidebarClose: (state, action) => {
+      state.sidebarOpen = action.payload;
+    },
     darkModeControl: (state) => {
       state.darkMode = !state.darkMode;
     },
   },
 });
 
-export const { sidebarShow, darkModeControl } = appSlice.actions;
+export const { sidebarShow, sidebarClose, darkModeControl } = appSlice.actions;
 
 export default appSlice.reducer;

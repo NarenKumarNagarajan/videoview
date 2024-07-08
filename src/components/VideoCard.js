@@ -45,4 +45,15 @@ const VideoCard = ({ video }) => {
   );
 };
 
+export const AdVideoCard = ({ video }) => {
+  return (
+    <div className="relative">
+      <VideoCard video={video} />
+      <p className="absolute left-4 top-4 rounded-lg bg-black px-3 py-2 font-semibold text-white">
+        ad
+      </p>
+    </div>
+  );
+};
+
 export default VideoCard;
