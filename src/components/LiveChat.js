@@ -44,7 +44,7 @@ const LiveChat = () => {
       <h1 className="h-[50px] border-b border-gray-600 p-3 text-lg font-bold dark:border-white">
         Live Chat
       </h1>
-      <div className="flex h-[380px] flex-col-reverse overflow-y-auto border-b border-gray-600 bg-gray-200 p-3 dark:border-white dark:bg-slate-600">
+      <div className="flex h-[380px] w-full flex-col-reverse overflow-y-auto border-b border-gray-600 bg-gray-200 p-3 dark:border-white dark:bg-slate-600">
         {allMessage.map((chat, index) => (
           <ChatMessage key={index} name={chat.name} message={chat.message} />
         ))}
