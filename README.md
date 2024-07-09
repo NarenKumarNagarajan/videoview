@@ -49,4 +49,6 @@ Supports comments with multiple levels of nesting, allowing users to reply to co
 
 Check out the live application [here](https://videoviewapp.netlify.app/).
 
+**Note**: create `.env` file and save your youtube API key in that file.
+
 Feel free to explore the app and contribute to its development!
