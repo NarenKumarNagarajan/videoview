@@ -30,12 +30,16 @@ React JS, Redux Toolkit, Tailwind, Javascript, JSON
 
 ## Debouncing in Search:
 
-## API Call Optimization:
+### API Call Optimization:
 
 - Implements debouncing to minimize unnecessary API calls. If the time between two keystrokes is less than 200ms, API calls are deferred.
-  ##Efficient Data Retrieval:
+
+### Efficient Data Retrieval:
+
 - For keystroke intervals greater than 200ms, an API call is made to fetch and display search results.
-  ##Cache Search Values:
+
+### Cache Search Values:
+
 - Caches search results to avoid redundant API calls and improve performance.
 
 ## Live Chat Feature:
