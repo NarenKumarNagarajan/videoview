@@ -98,13 +98,13 @@ export const commentsData = [
 
 export const nameGenerate = () => {
   const nameList = [
+    "kumar",
     "Gayathri",
     "Subbu",
+    "Nagu",
     "Ponnu",
     "Balu",
     "Jayanthi",
-    "Harini",
-    "Liya",
     "Drona",
     "Raja",
     "Arun",
