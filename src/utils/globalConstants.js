@@ -10,7 +10,7 @@ export const DASHBOARD_VIDEOS_LINK =
   process.env.REACT_APP_YOUTUBE_API_KEY;
 
 export const SEARCH_URL =
-  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+  "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 /* ================ Global Links ================ */
 
