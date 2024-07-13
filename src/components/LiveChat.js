@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ChatMessage from "./ChatMessage";
-import { addMessages } from "../redux/chatSlice";
+import { addMessages, chatStatus } from "../redux/chatSlice";
 import { messageGenerate, nameGenerate } from "../utils/globalConstants";
 import { LuSendHorizonal } from "react-icons/lu";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const LiveChat = () => {
   const [sendMessage, setSendMessage] = useState("");
 
   const dispatch = useDispatch();
   const allMessage = useSelector((state) => state.chatSlice.message);
+  const chatOpen = useSelector((state) => state.chatSlice.chatOpen);
 
   useEffect(() => {
     const chatInterval = setInterval(() => {
@@ -40,16 +42,30 @@ const LiveChat = () => {
   };
 
   return (
-    <div className="ml-4 h-[480px] w-full rounded-lg border border-gray-600 dark:border-white">
-      <h1 className="h-[50px] border-b border-gray-600 p-3 text-lg font-bold dark:border-white">
-        Live Chat
-      </h1>
-      <div className="flex h-[380px] w-full flex-col-reverse overflow-y-auto border-b border-gray-600 bg-gray-200 p-3 dark:border-white dark:bg-slate-600">
+    <div
+      className={`ml-4 ${!chatOpen ? "h-[50px]" : "h-[480px]"} w-full rounded-lg border border-gray-600 dark:border-white`}
+    >
+      <div
+        className={`flex h-[50px] items-center justify-between p-3 text-lg font-bold ${!chatOpen ? null : "border-b border-gray-600 dark:border-white"}`}
+      >
+        <h1>Live Chat</h1>
+        <button
+          className="cursor-pointer"
+          onClick={() => dispatch(chatStatus())}
+        >
+          {chatOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+        </button>
+      </div>
+      <div
+        className={`flex h-[380px] w-full flex-col-reverse overflow-y-auto border-b border-gray-600 bg-gray-200 p-3 dark:border-white dark:bg-slate-600 ${!chatOpen ? "hidden" : null}`}
+      >
         {allMessage.map((chat, index) => (
           <ChatMessage key={index} name={chat.name} message={chat.message} />
         ))}
       </div>
-      <div className="flex h-[50px] flex-row items-center justify-center">
+      <div
+        className={`flex h-[50px] flex-row items-center justify-center ${!chatOpen ? "hidden" : null}`}
+      >
         <input
           type="text"
           placeholder="lets chat..."

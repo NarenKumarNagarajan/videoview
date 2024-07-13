@@ -12,6 +12,11 @@ export const DASHBOARD_VIDEOS_LINK =
 export const SEARCH_URL =
   "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
+export const CHANNEL_DETAIL_LINK =
+  "https://www.googleapis.com/youtube/v3/channels?part=snippet&fields=items%2Fsnippet%2Fthumbnails&key=" +
+  process.env.REACT_APP_YOUTUBE_API_KEY +
+  "&id=";
+
 /* ================ Global Links ================ */
 
 /* ================ dummy Data ================ */
@@ -127,16 +132,61 @@ export const nameGenerate = () => {
 };
 
 export const messageGenerate = () => {
-  let result = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < 20) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    counter += 1;
-  }
-  return result;
+  const messages = [
+    "Great video! 👍😊",
+    "Love this content! ❤️👏",
+    "This is so amazing! 😍",
+    "Can you do more? 🙌",
+    "Best video ever! 🌟👏",
+    "Thanks for the upload! 🙏",
+    "Incredible video! 🎉💯",
+    "What a fantastic stream! 🎥",
+    "This is so funny! 😂",
+    "Awesome content! Keep it up! 🚀",
+    "Great job on this! 👍",
+    "Absolutely loved this video! 😄",
+    "Can’t wait for next one! ⏳",
+    "You’re doing great! 💪",
+    "This is gold! 🌟✨",
+    "Loved every minute of it! 😃",
+    "Thanks for the great content! 🙏",
+    "So entertaining! 🥳👏",
+    "Best video I've seen! 👏",
+    "Fantastic work as always! 🌟",
+    "Great stuff!",
+    "Very informative.",
+    "Loved the explanation.",
+    "Nice work.",
+    "Keep it up!",
+    "Superb!",
+    "Well done.",
+    "Impressive!",
+    "Good job.",
+    "Excellent!",
+    "So cool!",
+    "Amazing work!",
+    "Fantastic video!",
+    "Really helpful!",
+    "This is awesome!",
+    "Brilliant!",
+    "Outstanding!",
+    "Top-notch!",
+    "Very well done!",
+    "Super helpful!",
+    "Great insights!",
+    "Loved it!",
+    "Very entertaining.",
+    "So much fun!",
+    "Really enjoyed this.",
+    "Amazing content!",
+    "Very nice.",
+    "Pure genius!",
+    "Exceptional!",
+    "Highly recommended!",
+  ];
+
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  return messages[randomIndex];
 };
 
 /* ================ dummy Data ================ */

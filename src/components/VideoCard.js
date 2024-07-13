@@ -1,19 +1,33 @@
+import { useEffect, useState } from "react";
 import useDurationThumbnail from "../hooks/useDurationThumbnail";
 import usePublishedTime from "../hooks/usePublishedTime";
 import useWatchCount from "../hooks/useWatchCount";
+import { CHANNEL_DETAIL_LINK } from "../utils/globalConstants";
 
 const VideoCard = ({ video }) => {
   const { snippet, statistics, contentDetails } = video;
-  const { title, thumbnails, channelTitle, publishedAt } = snippet;
+  const { title, thumbnails, channelTitle, publishedAt, channelId } = snippet;
   const { viewCount } = statistics;
   const { duration } = contentDetails;
 
   const videoDuration = useDurationThumbnail(duration);
   const watchedCount = useWatchCount(viewCount);
   const publishedAgo = usePublishedTime(publishedAt);
+  const [channelLogo, setChannelLogo] = useState("");
+
+  useEffect(() => {
+    const getChannelDetails = async () => {
+      const response = await fetch(CHANNEL_DETAIL_LINK + channelId);
+      const data = await response.json();
+      setChannelLogo(data.items[0].snippet.thumbnails.default.url);
+    };
+
+    getChannelDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div className="m-4 w-[340px] cursor-pointer rounded-xl dark:text-white">
+    <div className="m-4 w-[320px] cursor-pointer rounded-xl dark:text-white">
       <div className="relative">
         <img
           src={thumbnails.medium.url}
@@ -25,9 +39,12 @@ const VideoCard = ({ video }) => {
         </p>
       </div>
       <div className="flex w-full flex-row items-start justify-start py-2">
-        <h1 className="rounded-full bg-black px-5 py-3 text-xl font-bold text-white dark:bg-white dark:text-black">
+        {/* <h1 className="rounded-full bg-black px-5 py-3 text-xl font-bold text-white dark:bg-white dark:text-black">
           {channelTitle[0]}
-        </h1>
+        </h1> */}
+        <div className="mt-2 h-16 w-16">
+          <img src={channelLogo} alt="channelLogo" className="rounded-full" />
+        </div>
         <ul className="ml-2">
           <li className="text-md">
             {title.length > 60 ? `${title.slice(0, 60)}...` : title}
