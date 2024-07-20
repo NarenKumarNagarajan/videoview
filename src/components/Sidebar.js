@@ -29,25 +29,25 @@ const Sidebar = () => {
             Shorts
           </li>
         </Link>
-        <Link to="/subscriptions">
+        <Link to="/dashboard">
           <li className="mb-5 flex items-center">
             <MdSubscriptions className="mr-6 text-3xl" />
             Subscriptions
           </li>
         </Link>
-        <Link to="/history">
+        <Link to="/dashboard">
           <li className="mb-5 flex items-center">
             <GrHistory className="mr-6 text-3xl" />
             History
           </li>
         </Link>
-        <Link to="/watchlater">
+        <Link to="/dashboard">
           <li className="mb-5 flex items-center">
             <MdOutlineWatchLater className="mr-6 text-3xl" />
             Watch Later
           </li>
         </Link>
-        <Link to="/likedvideos">
+        <Link to="/dashboard">
           <li className="mb-5 flex items-center">
             <BiLike className="mr-6 text-3xl" />
             Liked Videos

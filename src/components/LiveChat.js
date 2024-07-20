@@ -46,7 +46,7 @@ const LiveChat = () => {
       className={`ml-4 ${!chatOpen ? "h-[50px]" : "h-[480px]"} w-full rounded-lg border border-gray-600 dark:border-white`}
     >
       <div
-        className={`flex h-[50px] items-center justify-between p-3 text-lg font-bold ${!chatOpen ? null : "border-b border-gray-600 dark:border-white"}`}
+        className={`flex h-[50px] items-center justify-between p-3 text-lg font-bold ${chatOpen && "border-b border-gray-600 dark:border-white"}`}
       >
         <h1>Live Chat</h1>
         <button
@@ -57,14 +57,14 @@ const LiveChat = () => {
         </button>
       </div>
       <div
-        className={`flex h-[380px] w-full flex-col-reverse overflow-y-auto border-b border-gray-600 bg-gray-200 p-3 dark:border-white dark:bg-slate-600 ${!chatOpen ? "hidden" : null}`}
+        className={`flex h-[380px] w-full flex-col-reverse overflow-y-auto border-b border-gray-600 bg-gray-200 p-3 dark:border-white dark:bg-slate-600 ${!chatOpen && "hidden"}`}
       >
         {allMessage.map((chat, index) => (
           <ChatMessage key={index} name={chat.name} message={chat.message} />
         ))}
       </div>
       <div
-        className={`flex h-[50px] flex-row items-center justify-center ${!chatOpen ? "hidden" : null}`}
+        className={`flex h-[50px] flex-row items-center justify-center ${!chatOpen && "hidden"}`}
       >
         <input
           type="text"

@@ -9,8 +9,10 @@ import LiveChat from "./LiveChat";
 const WatchPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [searchParams] = useSearchParams();
   const params = searchParams.get("v");
+
   const sidebarOpen = useSelector((state) => state.appSlice.sidebarOpen);
 
   useEffect(() => {

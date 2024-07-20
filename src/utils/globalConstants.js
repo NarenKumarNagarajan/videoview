@@ -17,6 +17,16 @@ export const CHANNEL_DETAIL_LINK =
   process.env.REACT_APP_YOUTUBE_API_KEY +
   "&id=";
 
+export const SEARCH_RESULT_LINK =
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&key=" +
+  process.env.REACT_APP_YOUTUBE_API_KEY +
+  "&q=";
+
+export const VIDEO_COMMENTS_LINK =
+  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&key=" +
+  process.env.REACT_APP_YOUTUBE_API_KEY +
+  "&videoId=";
+
 /* ================ Global Links ================ */
 
 /* ================ dummy Data ================ */

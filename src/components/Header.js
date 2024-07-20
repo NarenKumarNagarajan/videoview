@@ -21,7 +21,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.appSlice.darkMode);
-  const searchCache = useSelector((state) => state.searchSlice);
+  const searchCache = useSelector((state) => state.searchSlice.searchResults);
 
   useEffect(() => {
     if (darkMode) {
@@ -29,17 +29,20 @@ const Header = () => {
     } else {
       document.documentElement.classList.remove("dark");
     }
+  }, [darkMode]);
 
+  useEffect(() => {
     const timer = setTimeout(() => {
       searchCache[searchQuery]
         ? setSuggestions(searchCache[searchQuery])
         : getSearchSuggestions();
     }, 300);
+
     return () => {
       clearTimeout(timer);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [darkMode, searchQuery]);
+  }, [searchQuery]);
 
   const getSearchSuggestions = async () => {
     const response = await fetch(SEARCH_URL + searchQuery);
@@ -81,13 +84,13 @@ const Header = () => {
             <CiSearch className="h-8 w-8" />
           </button>
         </div>
-        {showSuggestion && (
+        {showSuggestion && searchQuery !== "" && (
           <div className="absolute z-50 w-[500px] rounded-b-lg border-2 border-gray-100 bg-white">
             <ul>
               {suggestions.map((result, index) => (
                 <li
                   key={index}
-                  className="flex flex-row items-center px-4 py-2 hover:bg-slate-200"
+                  className="flex cursor-pointer flex-row items-center px-4 py-2 hover:bg-slate-200"
                 >
                   <CiSearch className="mr-2 h-4 w-4" /> {result}
                 </li>
